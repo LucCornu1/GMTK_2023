@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dq6qr6kammevr"]
+[gd_scene load_steps=13 format=3 uid="uid://dq6qr6kammevr"]
 
 [ext_resource type="Script" path="res://Character/Character.gd" id="1_1dthf"]
 [ext_resource type="Texture2D" uid="uid://d3gjgsuer7uoh" path="res://Assets/Sprites/Characters/warrior_idle-Sheet.png" id="2_wn7me"]
@@ -45,7 +45,7 @@ length = 2.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..")
+tracks/0/path = NodePath("../../Character7")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -68,34 +68,112 @@ tracks/1/keys = {
 "update": 0,
 "values": [-6.28319, -3.14159, 0.0]
 }
-tracks/2/type = "method"
+
+[sub_resource type="Animation" id="Animation_5nvj5"]
+resource_name = "HurtAnimation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.785398, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(5, -2), Vector2(6, -6), Vector2(0, 0)]
+}
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("..")
+tracks/2/path = NodePath(".:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.733333, 0, 0, 1), Color(1, 1, 1, 1)]
 }
+
+[sub_resource type="Animation" id="Animation_fxwfl"]
+resource_name = "DeathAnimation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.785398, 0.785398]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.686275, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, -2), Vector2(6, -6)]
+}
+
+[sub_resource type="Animation" id="Animation_sakk2"]
+length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w2ft6"]
 _data = {
-"AttackAnimation": SubResource("Animation_hgavp")
+"AttackAnimation": SubResource("Animation_hgavp"),
+"DeathAnimation": SubResource("Animation_fxwfl"),
+"HurtAnimation": SubResource("Animation_5nvj5"),
+"RESET": SubResource("Animation_sakk2")
 }
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_1dthf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 texture_filter = 1
-rotation = -6.28319
+rotation = 0.785398
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_hv7wn")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.856575
 speed_scale = 1.5
+offset = Vector2(6, -6)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")

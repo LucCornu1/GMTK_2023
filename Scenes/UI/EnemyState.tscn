@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4b3yu174hss5"]
+
+[ext_resource type="Texture2D" uid="uid://1bf8nc5pqsfe" path="res://Assets/white.png" id="1_gi4cj"]
+[ext_resource type="Script" path="res://Scenes/UI/CharacterState.gd" id="1_qh1jt"]
+
+[node name="EnemyState" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 337.0
+offset_bottom = 40.0
+script = ExtResource("1_qh1jt")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 7.0
+offset_right = 378.0
+offset_bottom = 33.0
+text = "Enemy
+"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 47.0
+offset_top = 6.0
+offset_right = 220.0
+offset_bottom = 33.0
+value = 100.0
+show_percentage = false
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_gi4cj")
+expand_mode = 1
