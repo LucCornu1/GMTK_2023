@@ -12,11 +12,13 @@ position = Vector2(575, 324)
 
 [node name="TurnQueue" parent="." instance=ExtResource("1_atmjc")]
 
+[node name="Character" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
+position = Vector2(760, 335)
+
 [node name="Character2" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
 position = Vector2(749, 452)
+isAI = true
 
 [node name="Character3" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
 position = Vector2(791, 235)
-
-[node name="Character" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
-position = Vector2(760, 335)
+isAI = true

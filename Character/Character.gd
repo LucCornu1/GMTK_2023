@@ -32,6 +32,11 @@ var character_class : CharacterClass
 var character_state : CharacterState
 var character_action : CharacterAction
 
+@export var isAI: bool = false
+@onready var animation_player_node: AnimationPlayer = get_node("AnimationPlayer")
+
+signal animation_over()
+
 #Mutateurs
 func SetClass(_class : CharacterClass):
 	character_class = _class
@@ -69,4 +74,9 @@ func begin_turn():
 	pass
 
 func do_action(action: Node):
-	pass
+	animation_player_node.play("AttackAnimation")
+	await animation_over
+
+
+func _on_animation_end():
+	emit_signal("animation_over")
