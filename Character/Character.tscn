@@ -91,6 +91,7 @@ script = ExtResource("1_1dthf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 rotation = -6.28319
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_hv7wn")
 animation = &"Idle"
 autoplay = "Idle"

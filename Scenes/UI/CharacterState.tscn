@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://doabsy07yxqhj"]
+
+[ext_resource type="Texture2D" uid="uid://1bf8nc5pqsfe" path="res://Assets/white.png" id="1_jbdpc"]
+[ext_resource type="Script" path="res://Scenes/UI/CharacterState.gd" id="1_t5q64"]
+
+[node name="CharacterState" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 324.0
+offset_bottom = 40.0
+script = ExtResource("1_t5q64")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 93.0
+offset_bottom = 32.0
+text = "Class name"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 93.0
+offset_top = 6.0
+offset_right = 275.0
+offset_bottom = 33.0
+value = 100.0
+show_percentage = false
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 284.0
+offset_right = 324.0
+offset_bottom = 40.0
+texture = ExtResource("1_jbdpc")
+expand_mode = 1

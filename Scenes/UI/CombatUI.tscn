@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck2u14xe0dxn1"]
+
+[ext_resource type="Script" path="res://Scenes/UI/CombatUI.gd" id="1_hr6jk"]
+[ext_resource type="PackedScene" uid="uid://doabsy07yxqhj" path="res://Scenes/UI/CharacterState.tscn" id="1_irnfd"]
+
+[node name="CombatUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hr6jk")
+
+[node name="ActionDescription" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 960.0
+offset_bottom = 74.0
+color = Color(0.435294, 0.541176, 0.25098, 1)
+
+[node name="Label" type="Label" parent="ActionDescription"]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 74.0
+text = "Attack description"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomRight" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 673.0
+offset_top = 347.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.435294, 0.541176, 0.25098, 1)
+
+[node name="BottomRight2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 429.0
+offset_right = 673.0
+offset_bottom = 540.0
+color = Color(0.690196, 0.690196, 0.392157, 1)
+
+[node name="BottomLeft" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 394.0
+offset_right = 338.0
+offset_bottom = 540.0
+color = Color(0.690196, 0.690196, 0.392157, 1)
+
+[node name="CharacterState" parent="BottomLeft" instance=ExtResource("1_irnfd")]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 332.0
+offset_bottom = 46.0
+
+[node name="CharacterState2" parent="BottomLeft" instance=ExtResource("1_irnfd")]
+offset_left = 8.0
+offset_top = 52.0
+offset_right = 332.0
+offset_bottom = 92.0
+
+[node name="CharacterState3" parent="BottomLeft" instance=ExtResource("1_irnfd")]
+offset_left = 8.0
+offset_top = 98.0
+offset_right = 332.0
+offset_bottom = 138.0

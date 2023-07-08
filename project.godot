@@ -12,13 +12,14 @@ config_version=5
 
 config/name="Gmtk 2023"
 run/main_scene="res://Scenes/Levels/BaseLevel.tscn"
-config/features=PackedStringArray("4.0", "Forward Plus")
+config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=960
 window/size/viewport_height=540
+window/stretch/mode="canvas_items"
 
 [rendering]
 

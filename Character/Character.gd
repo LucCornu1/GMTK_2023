@@ -26,10 +26,16 @@ enum CharacterAction
 	ACTION3,
 	ATTENDRE
 }
+
 var character_class : CharacterClass
 var character_state : CharacterState
 var character_action : CharacterAction
 
+
+@export var max_health: float = 100.0
+var current_health: float = max_health : set = _set_health, get = _get_health
+
+signal health_loss
 
 @export var isAI: bool = false
 @onready var animation_player_node: AnimationPlayer = get_node("AnimationPlayer")
@@ -68,15 +74,26 @@ func SetState(_state : CharacterState):
 func SetAction(_action : CharacterAction):
 	character_action = _action
 
+func _set_health(value: float):
+	if value != current_health:
+		current_health = value
+		emit_signal("health_loss", current_health)
+
 #Assesseurs
 func GetClass() -> CharacterClass:
 	return character_class
 
-func GetState() -> CharacterState:
+func GetState() -> CharacterState:  
 	return character_state
 
 func GetAction() -> CharacterAction:
 	return character_action
+
+func _get_classname() -> String: # WIP
+	return "Warrior"
+
+func _get_health() -> float:
+	return current_health
 
 #Fonctions membres
 
@@ -122,6 +139,7 @@ func begin_turn():
 
 func do_action(action: Node):
 	animation_player_node.play("AttackAnimation")
+	_set_health(_get_health() - 50.0)
 	await animation_over
 
 
