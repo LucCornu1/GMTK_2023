@@ -36,11 +36,10 @@ var character_action : CharacterAction
 var current_health: float = max_health : set = _set_health, get = _get_health
 
 signal health_loss
+signal end_turn
 
 @export var isAI: bool = false
 @onready var animation_player_node: AnimationPlayer = get_node("AnimationPlayer")
-
-signal animation_over()
 
 var GuerrierAction = [
 	[0.5,0.25,0.25,0], #Neutre
@@ -140,8 +139,7 @@ func begin_turn():
 func do_action(action: Node):
 	animation_player_node.play("AttackAnimation")
 	_set_health(_get_health() - 50.0)
-	await animation_over
 
 
 func _on_animation_end():
-	emit_signal("animation_over")
+	emit_signal("end_turn")

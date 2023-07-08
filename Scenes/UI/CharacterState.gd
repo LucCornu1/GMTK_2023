@@ -13,6 +13,7 @@ func init(character: Character):
 	if character == null:
 		return
 	
+	label_node.set_text(character._get_classname())
 	var __ = character.connect("health_loss", _update_health)
 
 func _update_health(value: float):
