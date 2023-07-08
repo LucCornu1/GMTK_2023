@@ -3,12 +3,13 @@ extends Node
 class_name TurnQueue
 
 var active_character_id: int = 0 : set = _set_active_character_id
-@onready var active_character: Character = get_child(active_character_id) : set = _set_active_character, get = _get_active_character
+@onready var active_character: Character : set = _set_active_character, get = _get_active_character
 var character_array = []
 var array_length: int = 0
 var current_turn_count: int = 0
 
 signal active_character_changed()
+signal ai_turn()
 
 
 func _set_active_character_id(new_id: int) -> void:
@@ -29,13 +30,15 @@ func _get_active_character() -> Character:
 	return active_character
 
 func _ready():
-	initialize() # Temporary, should be called by the parent instead
-	
 	var __ = connect("active_character_changed", _on_active_character_changed)
+	__ = connect("ai_turn", _on_end_turn)
 
 func initialize():
 	character_array = get_children(false) # Return all external children
 	array_length = character_array.size()
+	
+	if array_length > 0:
+		active_character = character_array[active_character_id];
 
 func play_turn():
 	if active_character == null:
@@ -46,11 +49,17 @@ func play_turn():
 	next_turn()
 
 func next_turn():
+	print("Current character : ", active_character, " with ID : ", active_character_id)
+	
 	current_turn_count += 1 # current_turn_count++ does not work and thats a shame
 	_set_active_character_id(active_character_id + 1) # Avoid edge cases
-	print(active_character_id)
-	print(active_character)
-	move_child(active_character, array_length - 1)
+	
+	if active_character.isAI == true:
+		emit_signal("ai_turn")
+
 
 func _on_active_character_changed(new_id: int):
 	_set_active_character(character_array[new_id])
+
+func _on_end_turn():
+	pass

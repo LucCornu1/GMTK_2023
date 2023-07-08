@@ -30,6 +30,12 @@ var character_class : CharacterClass
 var character_state : CharacterState
 var character_action : CharacterAction
 
+
+@export var isAI: bool = false
+@onready var animation_player_node: AnimationPlayer = get_node("AnimationPlayer")
+
+signal animation_over()
+
 var GuerrierAction = [
 	[0.5,0.25,0.25,0], #Neutre
 	[0.7,0.3,0,0], #Colère
@@ -50,6 +56,7 @@ var VoleurAction = [
 	[0,0.1,0.8,0.1], #Peur
 	[0.4,0.6,0,0], #Confiance
 	[0.2,0,0,0.8]] #Ennui
+
 
 #Mutateurs
 func SetClass(_class : CharacterClass):
@@ -114,4 +121,9 @@ func begin_turn():
 	pass
 
 func do_action(action: Node):
-	pass
+	animation_player_node.play("AttackAnimation")
+	await animation_over
+
+
+func _on_animation_end():
+	emit_signal("animation_over")
