@@ -156,8 +156,6 @@ func CheckChangeState(_evenement : Evenement = Evenement.AUCUN) :
 
 	var _fRand : float = randf()
 
-	var _pv : int #Variable temporaire à appliquer pour la vie actuelle.
-	var _pv_max : int #Variable temporaire à appliquer pour la vie max.
 	var _mana : int #Variable temporaire à appliquer pour la mana actuelle.
 	var _mana_max : int #Variable temporaire à appliquer pour la mana max.
 	var _pvAllie = [20,40] #Variable temporaire pour la vie actuelle des alliés.
@@ -166,14 +164,14 @@ func CheckChangeState(_evenement : Evenement = Evenement.AUCUN) :
 	if (_evenement != Evenement.AUCUN) :
 		match character_class :
 			CharacterClass.GUERRIER : # CAS DU GUERRIER
-				if (_pv > _pv_max/2) : #PV>50%
+				if (current_health > max_health/2) : #PV>50%
 					if (_fRand < 0.1) : #10%
 						ChangeState(CharacterState.ENNUI)
 						return
 					elif (_fRand < 0.1 + 0.3) : #30%
 						ChangeState(CharacterState.CONFIANCE)
 						return
-				elif (_pv < _pv_max/3) : #PV<25%
+				elif (current_health < max_health/4) : #PV<25%
 					if (_fRand < 0.2) : #20%
 						ChangeState(CharacterState.COLERE)
 						return
@@ -203,9 +201,9 @@ func CheckChangeState(_evenement : Evenement = Evenement.AUCUN) :
 					_ :
 						pass
 			CharacterClass.MAGE : # CAS DU MAGE
-				if (_pv > _pv_max/2) : #PV>50%
+				if (current_health > max_health/2) : #PV>50%
 					pass
-				elif (_pv < _pv_max/3) : #PV<25%
+				elif (current_health < max_health/4) : #PV<25%
 					if (_fRand < 0.3) : #30%
 						ChangeState(CharacterState.PEUR)
 						return
@@ -241,9 +239,9 @@ func CheckChangeState(_evenement : Evenement = Evenement.AUCUN) :
 						pass
 				pass
 			CharacterClass.VOLEUR : # CAS DU VOLEUR
-				if (_pv > _pv_max/2) : #PV>50%
+				if (current_health > max_health/2) : #PV>50%
 					pass
-				elif (_pv < _pv_max/3) : #PV<25%
+				elif (current_health < max_health/4) : #PV<25%
 					if (_fRand < 0.3) : #30%
 						ChangeState(CharacterState.PEUR)
 						return
