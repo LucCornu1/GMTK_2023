@@ -101,8 +101,8 @@ func GetState() -> CharacterState:
 func GetAction() -> CharacterAction:
 	return character_action
 
-func _get_classname() -> String: # WIP
-	return "Warrior"
+func _get_classname() -> String: 
+	return CharacterClass.keys()[character_class]
 
 func _get_health() -> float:
 	return current_health
@@ -164,9 +164,7 @@ func _on_animation_end():
 func CheckChangeState(_evenement : Evenement = Evenement.AUCUN, tab_pv_allie = [], tab_pvmax_allie=[]) :
 	if (temps_changement_etat < 1) :
 		return
-
 	var _fRand : float = randf()
-
 	if (_evenement != Evenement.AUCUN) :
 		match character_class :
 			CharacterClass.GUERRIER : # CAS DU GUERRIER
