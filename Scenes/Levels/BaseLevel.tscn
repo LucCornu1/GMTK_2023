@@ -1,24 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4md4i3eyyse5"]
+[gd_scene load_steps=5 format=3 uid="uid://c4md4i3eyyse5"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/BaseLevel.gd" id="1_0ab0t"]
 [ext_resource type="PackedScene" uid="uid://cqorkk8jtma8s" path="res://Scenes/TurnQueue.tscn" id="1_atmjc"]
 [ext_resource type="PackedScene" uid="uid://dq6qr6kammevr" path="res://Character/Character.tscn" id="2_hn7hw"]
+[ext_resource type="PackedScene" uid="uid://ck2u14xe0dxn1" path="res://Scenes/UI/CombatUI.tscn" id="4_ns2va"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_0ab0t")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(575, 324)
+position = Vector2(480, 270)
 
 [node name="TurnQueue" parent="." instance=ExtResource("1_atmjc")]
 
 [node name="Character" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
-position = Vector2(760, 335)
+position = Vector2(302, 230)
 
 [node name="Character2" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
-position = Vector2(749, 452)
+position = Vector2(231, 231)
 isAI = true
 
 [node name="Character3" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
-position = Vector2(791, 235)
+position = Vector2(150, 231)
 isAI = true
+
+[node name="Character4" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
+position = Vector2(838, 230)
+
+[node name="Character5" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
+position = Vector2(764, 232)
+
+[node name="Character6" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
+position = Vector2(694, 230)
+
+[node name="Character7" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
+position = Vector2(609, 231)
+
+[node name="CombatUI" parent="." node_paths=PackedStringArray("top_character", "middle_character", "bottom_character", "enemy_0", "enemy_1", "enemy_2", "enemy_3") instance=ExtResource("4_ns2va")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+top_character = NodePath("../TurnQueue/Character")
+middle_character = NodePath("../TurnQueue/Character2")
+bottom_character = NodePath("../TurnQueue/Character3")
+enemy_0 = NodePath("../TurnQueue/Character4")
+enemy_1 = NodePath("../TurnQueue/Character5")
+enemy_2 = NodePath("../TurnQueue/Character6")
+enemy_3 = NodePath("../TurnQueue/Character7")
