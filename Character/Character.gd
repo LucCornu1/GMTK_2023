@@ -40,6 +40,9 @@ var temps_changement_etat : int
 @export var max_health: float = 100.0
 var current_health: float = max_health : set = _set_health, get = _get_health
 
+@export var max_mana: float = 100.0
+var current_mana: float = max_mana : set = _set_mana, get = _get_mana
+
 signal health_loss
 signal end_turn
 
@@ -82,6 +85,11 @@ func _set_health(value: float):
 	if value != current_health:
 		current_health = value
 		emit_signal("health_loss", current_health)
+		
+func _set_mana(value: float):
+	if value != current_mana:
+		current_mana = value
+		emit_signal("mana_change", current_mana)
 
 #Assesseurs
 func GetClass() -> CharacterClass:
@@ -98,6 +106,9 @@ func _get_classname() -> String: # WIP
 
 func _get_health() -> float:
 	return current_health
+	
+func _get_mana() -> float:
+	return current_mana
 
 #Fonctions membres
 
@@ -150,16 +161,11 @@ func _on_animation_end():
 	emit_signal("animation_over")
 
 
-func CheckChangeState(_evenement : Evenement = Evenement.AUCUN) :
+func CheckChangeState(_evenement : Evenement = Evenement.AUCUN, tab_pv_allie = [], tab_pvmax_allie=[]) :
 	if (temps_changement_etat < 1) :
 		return
 
 	var _fRand : float = randf()
-
-	var _mana : int #Variable temporaire à appliquer pour la mana actuelle.
-	var _mana_max : int #Variable temporaire à appliquer pour la mana max.
-	var _pvAllie = [20,40] #Variable temporaire pour la vie actuelle des alliés.
-	var _pvMaxAllie = [30,50] #Variable temporaire pour la vie max des alliés.
 
 	if (_evenement != Evenement.AUCUN) :
 		match character_class :
@@ -178,10 +184,10 @@ func CheckChangeState(_evenement : Evenement = Evenement.AUCUN) :
 					elif (_fRand < 0.2 + 0.3) : #30%
 						ChangeState(CharacterState.PEUR)
 						return
-				if (_pvAllie.size() == _pvMaxAllie.size()) : #Seulement si les tableaux ont la même taille.
-					for i in range (0, _pvAllie.size()) :
+				if (tab_pv_allie.size() == tab_pvmax_allie.size()) : #Seulement si les tableaux ont la même taille.
+					for i in range (0, tab_pv_allie.size()) :
 						_fRand = randf()
-						if (_pvAllie[i] < (_pvMaxAllie[i]/4) && _fRand < 0.2) : #Vérification de changement d'état par allié en dessous de 25%
+						if (tab_pv_allie[i] < (tab_pvmax_allie[i]/4) && _fRand < 0.2) : #Vérification de changement d'état par allié en dessous de 25%
 							ChangeState(CharacterState.COLERE)
 							return
 				# Pas de vérification de la mana.
@@ -207,20 +213,20 @@ func CheckChangeState(_evenement : Evenement = Evenement.AUCUN) :
 					if (_fRand < 0.3) : #30%
 						ChangeState(CharacterState.PEUR)
 						return
-				if (_pvAllie.size() == _pvMaxAllie.size()) : #Seulement si les tableaux ont la même taille.
-					for i in range (0, _pvAllie.size()) :
+				if (tab_pv_allie.size() == tab_pvmax_allie.size()) : #Seulement si les tableaux ont la même taille.
+					for i in range (0, tab_pv_allie.size()) :
 						_fRand = randf()
-						if (_pvAllie[i] < (_pvMaxAllie[i]/4) && _fRand < 0.2) : #Vérification de changement d'état par allié en dessous de 25%
+						if (tab_pv_allie[i] < (tab_pvmax_allie[i]/4) && _fRand < 0.2) : #Vérification de changement d'état par allié en dessous de 25%
 							ChangeState(CharacterState.PEUR)
 							return
-						elif (_pvAllie[i] < (_pvMaxAllie[i]/4) && _fRand < 0.2+0.2) :
+						elif (tab_pv_allie[i] < (tab_pvmax_allie[i]/4) && _fRand < 0.2+0.2) :
 							ChangeState(CharacterState.COLERE)
 							return
-				if (_mana < _mana_max/4) : #Mana<25%
+				if (current_mana < max_mana/4) : #Mana<25%
 					if (_fRand < 0.3) : #30%
 						ChangeState(CharacterState.ENNUI)
 						return
-				elif (_mana > _mana_max/2) : #MANA>50%
+				elif (current_mana > max_mana/2) : #MANA>50%
 					if (_fRand < 0.2) : #20%
 						ChangeState(CharacterState.CONFIANCE)
 						return
@@ -245,10 +251,10 @@ func CheckChangeState(_evenement : Evenement = Evenement.AUCUN) :
 					if (_fRand < 0.3) : #30%
 						ChangeState(CharacterState.PEUR)
 						return
-				if (_pvAllie.size() == _pvMaxAllie.size()) : #Seulement si les tableaux ont la même taille.
-					for i in range (0, _pvAllie.size()) :
+				if (tab_pv_allie.size() == tab_pvmax_allie.size()) : #Seulement si les tableaux ont la même taille.
+					for i in range (0, tab_pv_allie.size()) :
 						_fRand = randf()
-						if (_pvAllie[i] < (_pvMaxAllie[i]/4) && _fRand < 0.2) : #Vérification de changement d'état par allié en dessous de 25%
+						if (tab_pv_allie[i] < (tab_pvmax_allie[i]/4) && _fRand < 0.2) : #Vérification de changement d'état par allié en dessous de 25%
 							ChangeState(CharacterState.COLERE)
 							return
 				# Pas de vérification de la mana.
