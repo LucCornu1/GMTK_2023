@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Character
+
 enum CharacterClass
 {
 	GUERRIER,
@@ -52,3 +54,19 @@ func GetAction() -> CharacterAction:
 
 func ChoseAction(_class : CharacterClass = character_class, _state : CharacterState = character_state) -> CharacterAction :
 	return character_action
+
+func _ready():
+	pass
+
+func _process(_delta: float):
+	pass
+
+func _physics_process(_delta: float):
+	pass
+
+
+func begin_turn():
+	pass
+
+func do_action(action: Node):
+	pass
