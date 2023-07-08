@@ -26,7 +26,29 @@ enum CharacterAction
 	ACTION3,
 	ATTENDRE
 }
-var character_class
-var character_state
-var character_action
+var character_class : CharacterClass
+var character_state : CharacterState
+var character_action : CharacterAction
 
+#Mutateurs
+func SetClass(_class : CharacterClass):
+	character_class = _class
+
+func SetState(_state : CharacterState):
+	character_state = _state
+
+func SetAction(_action : CharacterAction):
+	character_action = _action
+
+#Assesseurs
+func GetClass() -> CharacterClass:
+	return character_class
+
+func GetState() -> CharacterState:
+	return character_state
+
+func GetAction() -> CharacterAction:
+	return character_action
+
+func ChoseAction(_class : CharacterClass = character_class, _state : CharacterState = character_state) -> CharacterAction :
+	return character_action
