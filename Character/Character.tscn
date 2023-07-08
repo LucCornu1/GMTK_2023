@@ -1,8 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq6qr6kammevr"]
+[gd_scene load_steps=8 format=3 uid="uid://dq6qr6kammevr"]
 
 [ext_resource type="Script" path="res://Character/Character.gd" id="1_1dthf"]
+[ext_resource type="Texture2D" uid="uid://d3gjgsuer7uoh" path="res://Assets/Sprites/Characters/warrior_idle-Sheet.png" id="2_wn7me"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq4tb"]
+atlas = ExtResource("2_wn7me")
+region = Rect2(0, 0, 74, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb6jr"]
+atlas = ExtResource("2_wn7me")
+region = Rect2(74, 0, 74, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbldw"]
+atlas = ExtResource("2_wn7me")
+region = Rect2(148, 0, 74, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vid8j"]
+atlas = ExtResource("2_wn7me")
+region = Rect2(222, 0, 74, 43)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hv7wn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq4tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb6jr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbldw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vid8j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_1dthf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_hv7wn")
+frame_progress = 0.333697
+speed_scale = 2.0

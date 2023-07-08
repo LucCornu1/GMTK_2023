@@ -36,9 +36,6 @@ func _ready():
 func initialize():
 	character_array = get_children(false) # Return all external children
 	array_length = character_array.size()
-	
-	play_turn()
-	play_turn()
 
 func play_turn():
 	if active_character == null:
