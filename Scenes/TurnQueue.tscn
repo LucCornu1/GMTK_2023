@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqorkk8jtma8s"]
+
+[ext_resource type="Script" path="res://Scenes/TurnQueue.gd" id="1_3l46j"]
+[ext_resource type="PackedScene" uid="uid://dq6qr6kammevr" path="res://Character/Character.tscn" id="2_p6odv"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_3l46j")
+
+[node name="Character" parent="." instance=ExtResource("2_p6odv")]
+
+[node name="Character2" parent="." instance=ExtResource("2_p6odv")]
+
+[node name="Character3" parent="." instance=ExtResource("2_p6odv")]
