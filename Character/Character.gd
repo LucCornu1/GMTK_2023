@@ -41,5 +41,9 @@ func _process(_delta: float):
 func _physics_process(_delta: float):
 	pass
 
-func do_action():
+
+func begin_turn():
+	pass
+
+func do_action(action: Node):
 	pass

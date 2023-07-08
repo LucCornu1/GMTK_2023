@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4md4i3eyyse5"]
+
+[ext_resource type="PackedScene" uid="uid://cqorkk8jtma8s" path="res://Scenes/TurnQueue.tscn" id="1_atmjc"]
+
+[node name="Level" type="Node2D"]
+
+[node name="TurnQueue" parent="." instance=ExtResource("1_atmjc")]

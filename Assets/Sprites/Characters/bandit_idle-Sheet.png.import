@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://b0ux05dkhnuq2"
+path="res://.godot/imported/bandit_idle-Sheet.png-ab134a7f7751356b7408be22057a80aa.image"
+
+[deps]
+
+source_file="res://Assets/Sprites/Characters/bandit_idle-Sheet.png"
+dest_files=["res://.godot/imported/bandit_idle-Sheet.png-ab134a7f7751356b7408be22057a80aa.image"]
+
+[params]
+

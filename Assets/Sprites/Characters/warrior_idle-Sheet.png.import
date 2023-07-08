@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://d3gjgsuer7uoh"
+path="res://.godot/imported/warrior_idle-Sheet.png-15d7641c9482783625cfece31894bbc6.image"
+
+[deps]
+
+source_file="res://Assets/Sprites/Characters/warrior_idle-Sheet.png"
+dest_files=["res://.godot/imported/warrior_idle-Sheet.png-15d7641c9482783625cfece31894bbc6.image"]
+
+[params]
+

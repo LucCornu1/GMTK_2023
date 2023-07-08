@@ -9,7 +9,6 @@ var array_length: int = 0
 var current_turn_count: int = 0
 
 signal active_character_changed()
-signal end_turn
 
 
 func _set_active_character_id(new_id: int) -> void:
@@ -30,10 +29,9 @@ func _get_active_character() -> Character:
 	return active_character
 
 func _ready():
-	initialize() # Temporary
+	initialize() # Temporary, should be called by the parent instead
 	
-	var __ = connect("end_turn", _on_active_character_end_turn)
-	__ = connect("active_character_changed", _on_active_character_changed)
+	var __ = connect("active_character_changed", _on_active_character_changed)
 
 func initialize():
 	character_array = get_children(false) # Return all external children
@@ -41,13 +39,13 @@ func initialize():
 	
 	play_turn()
 	play_turn()
-	play_turn()
-	play_turn()
-	play_turn()
-	play_turn()
 
 func play_turn():
-	await active_character.do_action()
+	if active_character == null:
+		return
+	
+	await active_character.begin_turn()
+	await active_character.do_action(null)
 	next_turn()
 
 func next_turn():
@@ -56,9 +54,6 @@ func next_turn():
 	print(active_character_id)
 	print(active_character)
 	move_child(active_character, array_length - 1)
-
-func _on_active_character_end_turn():
-	pass
 
 func _on_active_character_changed(new_id: int):
 	_set_active_character(character_array[new_id])
