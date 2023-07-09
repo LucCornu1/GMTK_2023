@@ -36,8 +36,9 @@ var character_state : CharacterState
 var character_action : CharacterAction
 var temps_changement_etat : int
 
-var bEmpoisonnement : bool = false
-var bCache : bool = false
+var bEmpoisonnement : bool = false #Empoisonnement du voleur
+var bCache : bool = false #Cachette du voleur
+var bDefense : bool = false #Defense du guerrier
 
 var character_list
 
@@ -108,7 +109,10 @@ func damage(value:float) -> bool :
 	if (current_health <= 0):
 		return false
 	else :
-		current_health -= value
+		if (bDefense) :
+			current_health -= value/2
+		else :
+			current_health -= value
 		current_health = clamp(current_health,0,max_health)
 		return true
 
@@ -232,6 +236,7 @@ func _physics_process(_delta: float):
 
 func begin_turn():
 	bCache = false # Fin de l'effet caché
+	bDefense = false # Fin de la defense
 	temps_changement_etat = temps_changement_etat + 1 # Augmente le temps depuis le dernier changement d'émotion
 
 func do_action( _characterlist, action: CharacterAction = CharacterAction.ATTENDRE):
@@ -393,6 +398,22 @@ func CibleEnnemiUnique() -> Character :
 		return ciblepotentiel[nRand]
 	else :
 		return self
+
+func CibleToutEnnemi() -> Array :
+	var ciblepotentiel =[]
+	if (character_class == CharacterClass.GUERRIER || character_class == CharacterClass.MAGE || character_class == CharacterClass.VOLEUR):
+		for i in range (0, character_list.size()) :
+			if (character_list[i].GetClass() == CharacterClass.GUERRIER || character_list[i].GetClass() == CharacterClass.MAGE || character_list[i].GetClass() == CharacterClass.VOLEUR):
+				pass
+			else :
+				if (character_list[i]._get_health()>0):
+					ciblepotentiel.append(character_list[i])
+	else :
+		return []
+	if (ciblepotentiel.size()>0):
+		return ciblepotentiel
+	else :
+		return []
 
 func CibleAllieUnique() -> Character :
 	var ciblepotentiel =[]
