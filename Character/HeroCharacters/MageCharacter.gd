@@ -26,4 +26,23 @@ func do_action(action: CharacterAction = CharacterAction.ATTENDRE):
 		CharacterAction.ATTENDRE:
 			print("Idle")
 	
+	# print(self)
 	animation_player_node.play("AttackAnimation")
+
+
+
+
+
+
+
+
+
+
+func _get_action1_name():
+	return "A1"
+
+func _get_action2_name():
+	return "A2"
+
+func _get_action3_name():
+	return "A3"
