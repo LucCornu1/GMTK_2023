@@ -18,23 +18,29 @@ position = Vector2(302, 230)
 
 [node name="Character2" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
 position = Vector2(231, 231)
+character_class = 1
 isAI = true
 
 [node name="Character3" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
 position = Vector2(150, 231)
+character_class = 2
 isAI = true
 
 [node name="Character4" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
 position = Vector2(838, 230)
+character_class = 3
 
 [node name="Character5" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
 position = Vector2(764, 232)
+character_class = 4
 
 [node name="Character6" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
 position = Vector2(694, 230)
+character_class = 4
 
 [node name="Character7" parent="TurnQueue" instance=ExtResource("2_hn7hw")]
 position = Vector2(609, 231)
+character_class = 5
 
 [node name="CombatUI" parent="." node_paths=PackedStringArray("top_character", "middle_character", "bottom_character", "enemy_0", "enemy_1", "enemy_2", "enemy_3") instance=ExtResource("4_ns2va")]
 anchors_preset = 15

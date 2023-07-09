@@ -31,7 +31,7 @@ enum Evenement
 	AUCUN,
 	ENNEMI_TUE
 }
-var character_class : CharacterClass
+@export var character_class : CharacterClass
 var character_state : CharacterState
 var character_action : CharacterAction
 var temps_changement_etat : int
@@ -123,6 +123,8 @@ func ChoseAction(_class : CharacterClass = character_class, _state : CharacterSt
 			_tabAction = MageAction
 		CharacterClass.VOLEUR :
 			_tabAction = VoleurAction
+		_ :
+			_tabAction = GuerrierAction
 	var _fRand : float = randf()
 
 	if (_fRand < _tabAction[0]) :
