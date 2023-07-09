@@ -126,19 +126,64 @@ func ChoseAction(_class : CharacterClass = character_class, _state : CharacterSt
 		_ :
 			_tabAction = GuerrierAction
 	var _fRand : float = randf()
-
-	if (_fRand < _tabAction[0]) :
-		_action = CharacterAction.ACTION1
-	elif (_fRand < (_tabAction[0]+_tabAction[1])) :
-		_action = CharacterAction.ACTION2
-	elif (_fRand < (_tabAction[0]+_tabAction[1]+_tabAction[2])) :
-		_action = CharacterAction.ACTION3
-	else :
-		_action = CharacterAction.ATTENDRE
-
+	
+	match _state :
+		CharacterState.NEUTRE :
+			if (_fRand < _tabAction[0][0]) :
+				_action = CharacterAction.ACTION1
+			elif (_fRand < (_tabAction[0][0]+_tabAction[0][1])) :
+				_action = CharacterAction.ACTION2
+			elif (_fRand < (_tabAction[0][0]+_tabAction[0][1]+_tabAction[0][2])) :
+				_action = CharacterAction.ACTION3
+			else :
+				_action = CharacterAction.ATTENDRE
+		CharacterState.COLERE :
+			if (_fRand < _tabAction[1][0]) :
+				_action = CharacterAction.ACTION1
+			elif (_fRand < (_tabAction[1][0]+_tabAction[1][1])) :
+				_action = CharacterAction.ACTION2
+			elif (_fRand < (_tabAction[1][0]+_tabAction[1][1]+_tabAction[1][2])) :
+				_action = CharacterAction.ACTION3
+			else :
+				_action = CharacterAction.ATTENDRE
+		CharacterState.PEUR :
+			if (_fRand < _tabAction[2][0]) :
+				_action = CharacterAction.ACTION1
+			elif (_fRand < (_tabAction[2][0]+_tabAction[2][1])) :
+				_action = CharacterAction.ACTION2
+			elif (_fRand < (_tabAction[2][0]+_tabAction[2][1]+_tabAction[2][2])) :
+				_action = CharacterAction.ACTION3
+			else :
+				_action = CharacterAction.ATTENDRE
+		CharacterState.CONFIANCE :
+			if (_fRand < _tabAction[3][0]) :
+				_action = CharacterAction.ACTION1
+			elif (_fRand < (_tabAction[3][0]+_tabAction[3][1])) :
+				_action = CharacterAction.ACTION2
+			elif (_fRand < (_tabAction[3][0]+_tabAction[3][1]+_tabAction[3][2])) :
+				_action = CharacterAction.ACTION3
+			else :
+				_action = CharacterAction.ATTENDRE
+		CharacterState.ENNUI :
+			if (_fRand < _tabAction[4][0]) :
+				_action = CharacterAction.ACTION1
+			elif (_fRand < (_tabAction[4][0]+_tabAction[4][1])) :
+				_action = CharacterAction.ACTION2
+			elif (_fRand < (_tabAction[4][0]+_tabAction[4][1]+_tabAction[4][2])) :
+				_action = CharacterAction.ACTION3
+			else :
+				_action = CharacterAction.ATTENDRE
+		_ :
+			if (_fRand < _tabAction[0][0]) :
+				_action = CharacterAction.ACTION1
+			elif (_fRand < (_tabAction[0][0]+_tabAction[0][1])) :
+				_action = CharacterAction.ACTION2
+			elif (_fRand < (_tabAction[0][0]+_tabAction[0][1]+_tabAction[0][2])) :
+				_action = CharacterAction.ACTION3
+			else :
+				_action = CharacterAction.ATTENDRE
 	if (_state == character_state && _class == character_class) : #Sauvegarde de l'action uniquement si les opérateurs n'ont pas été surchargés
 		character_action = _action
-
 	return character_action #Retourne l'action choisie par la classe du personnage et la sauvegarde.
 
 func _ready():
