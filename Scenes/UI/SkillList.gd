@@ -74,14 +74,15 @@ func _add_voleur() :
 	_add_target(chrVoleur)
 
 func _on_active_character_changed(character: Character):
-	if character._get_health() <= 0:
-		emit_signal("skip_turn")
-	
 	_set_active_character(character)
-	update_skills()
 	
-	if not active_character.isAI:
-		visible = true
+	print(character)
+	
+	if character._get_health() <= 0 or active_character.isAI:
+		return
+	
+	visible = true
+	update_skills()
 
 
 func _on_button_pressed():

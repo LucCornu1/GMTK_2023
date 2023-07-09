@@ -23,7 +23,7 @@ enum CharacterAction
 func _set_active_character_id(new_id: int) -> void:
 	if new_id >= array_length:
 		new_id = 0 # Make sure the array does not go out of bound
-	
+
 	if new_id != active_character_id:
 		active_character_id = new_id
 		_set_active_character(character_array[new_id])
@@ -44,17 +44,17 @@ func _ready():
 func initialize():
 	character_array = get_children(false) # Return all external children
 	array_length = character_array.size()
-	
+
 	for c in character_array:
 		var __ = c.end_turn.connect(_on_end_turn)
-	
+
 	if array_length > 0:
 		_set_active_character(character_array[active_character_id]);
 
 func play_turn():
-	if active_character == null:
-		return
-	
+	if active_character == null or active_character._get_health() <= 0:
+		next_turn()
+
 	if active_character.isAI:
 		var action = active_character.begin_turn()
 		print("Action : ",CharacterAction.keys()[action])
@@ -66,8 +66,8 @@ func play_turn():
 func next_turn():
 	current_turn_count += 1 # current_turn_count++ does not work and thats a shame
 	_set_active_character_id(active_character_id + 1) # Avoid edge cases
-	
-	if active_character.isAI == true:
+
+	if active_character.isAI == true or active_character._get_health() <= 0:
 		emit_signal("ai_turn")
 
 
@@ -86,5 +86,5 @@ func _on_action_selected(target, action):
 	active_character.begin_turn()
 	if (!target is bool) :
 		active_character.do_action(target, action)
-	else : 
+	else :
 		active_character.do_action(character_array, action)
