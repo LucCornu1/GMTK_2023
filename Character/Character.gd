@@ -204,7 +204,7 @@ func do_action(action: CharacterAction = CharacterAction.ATTENDRE):
 
 func _on_animation_end():
 	emit_signal("end_turn")
-	emit_signal("animation_over")
+	# emit_signal("animation_over")
 
 
 func CheckChangeState(_evenement : Evenement = Evenement.AUCUN, tab_pv_allie = [], tab_pvmax_allie=[]) :
