@@ -10,6 +10,7 @@ func _ready():
 	
 	if skill_list_node != null:
 		__ = turn_manager.active_character_changed.connect(skill_list_node._on_active_character_changed)
+		__ = skill_list_node.action_selected.connect(turn_manager._on_action_selected)
 	
 	turn_manager.initialize()
 

@@ -34,7 +34,7 @@ func do_action( _characterlist,action: CharacterAction = CharacterAction.ATTENDR
 		CharacterAction.ATTENDRE:
 			print("Idle")
 			attendre()
-	# print(self)
+
 	animation_player_node.play("AttackAnimation")
 
 func _get_action1_name():
@@ -45,6 +45,7 @@ func _get_action2_name():
 
 func _get_action3_name():
 	return "A3"
+
 
 func bouledefeu():
 	var cible = CibleEnnemiUnique()

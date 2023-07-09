@@ -7,7 +7,7 @@ enum CharacterClass
 	GUERRIER,
 	MAGE,
 	VOLEUR,
-	GOBELIN,
+	GNOME,
 	ORC,
 	SQUELETTE
 }
@@ -96,7 +96,7 @@ func _set_mana(value: float):
 	if value != current_mana:
 		current_mana = value
 		current_mana = clamp(current_mana, 0 ,max_mana)
-		emit_signal("mana_change", current_mana)
+		# emit_signal("mana_change", current_mana)
 
 func lose_mana(value: float) -> bool :
 	if (value > current_mana) :
@@ -392,7 +392,10 @@ func CibleEnnemiUnique() -> Character :
 				if (character_list[i]._get_health()>0):
 					ciblepotentiel.append(character_list[i])
 	else :
-		return self
+		for i in range (0, character_list.size()) :
+			if (character_list[i].GetClass() == CharacterClass.GUERRIER || character_list[i].GetClass() == CharacterClass.MAGE || character_list[i].GetClass() == CharacterClass.VOLEUR):
+				if (character_list[i]._get_health()>0):
+					ciblepotentiel.append(character_list[i])
 	if (ciblepotentiel.size()>0):
 		var nRand = randi()%ciblepotentiel.size()
 		return ciblepotentiel[nRand]

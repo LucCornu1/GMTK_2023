@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Character/HeroCharacters/MageCharacter.gd" id="1_egi6t"]
 [ext_resource type="PackedScene" uid="uid://dq6qr6kammevr" path="res://Character/Character.tscn" id="1_g5yp3"]
-[ext_resource type="Texture2D" uid="uid://cvjdmm0p67oqf" path="res://Assets/Sprites/Characters/mage_attack-Sheet.png" id="2_ilb2b"]
-[ext_resource type="Texture2D" uid="uid://bvca0v13xu3uf" path="res://Assets/Sprites/Characters/mage_idle-Sheet.png" id="2_q2h8o"]
-[ext_resource type="Texture2D" uid="uid://bvbwxegq1o5eo" path="res://Assets/Sprites/Characters/mage_death-Sheet.png" id="3_c0rsh"]
-[ext_resource type="Texture2D" uid="uid://ywhecpss2vpa" path="res://Assets/Sprites/Characters/mage_hurt-Sheet.png" id="4_1g4ck"]
+[ext_resource type="Texture2D" uid="uid://copk1cihjjgmk" path="res://Assets/Sprites/Characters/mage_attack-Sheet.png" id="2_ilb2b"]
+[ext_resource type="Texture2D" uid="uid://cvdynq8s1i5rf" path="res://Assets/Sprites/Characters/mage_idle-Sheet.png" id="2_q2h8o"]
+[ext_resource type="Texture2D" uid="uid://c1rb34pvud8di" path="res://Assets/Sprites/Characters/mage_death-Sheet.png" id="3_c0rsh"]
+[ext_resource type="Texture2D" uid="uid://g042q32h1hbp" path="res://Assets/Sprites/Characters/mage_hurt-Sheet.png" id="4_1g4ck"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_thsdy"]
 atlas = ExtResource("2_ilb2b")
