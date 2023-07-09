@@ -17,17 +17,24 @@ func begin_turn():
 
 func do_action( _characterlist,action: CharacterAction = character_action):
 	character_list = _characterlist
+	
+	var anim_name: String = "Default"
 	match action:
 		CharacterAction.ACTION1:
 			coupdepee()
+			anim_name = "Attack"
 		CharacterAction.ACTION2:
 			attaquetournoyante()
+			anim_name = "Attack"
 		CharacterAction.ACTION3:
 			sedefendre()
+			anim_name = "Block"
 		CharacterAction.ATTENDRE:
 			print("Idle")
 			attendre()
-	animation_player_node.play("AttackAnimation")
+
+	animation_player_node.play(anim_name)
+
 
 func coupdepee():
 	var cible = CibleEnnemiUnique()
@@ -58,3 +65,13 @@ func _get_actionname() -> String:
 			return "Attendre"
 		_ :
 			return ""
+
+
+func _get_action1_name():
+	return "Attack"
+
+func _get_action2_name():
+	return "Laugh"
+
+func _get_action3_name():
+	return "Hide"

@@ -5,6 +5,8 @@ class_name Gnome
 var target: Character
 var is_hidden: bool = false
 
+@onready var anim_node: AnimatedSprite2D = get_node("AnimatedSprite2D")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
@@ -26,17 +28,21 @@ func do_action(_characterlist, action: CharacterAction = CharacterAction.ATTENDR
 	character_list = _characterlist
 	target = CibleEnnemiUnique()
 	
+	var anim_name: String = "Default"
 	match action:
 		CharacterAction.ACTION1:
 			target._set_health(target._get_health() - 30)
+			anim_name = "Attack"
 		CharacterAction.ACTION2:
 			var _fRand : float = randf()
 			if _fRand < 0.5:
 				target.ChangeState(CharacterState.COLERE)
+			anim_name = "Laugh"
 		CharacterAction.ACTION3:
 			is_hidden = true
+			anim_name = "Hide"
 	
-	animation_player_node.play("AttackAnimation")
+	animation_player_node.play(anim_name)
 
 
 func _get_action1_name():
