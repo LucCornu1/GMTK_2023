@@ -47,10 +47,14 @@ func play_turn():
 	if active_character == null:
 		return
 	
-	active_character.begin_turn()
-	active_character.do_action(null)
+	if active_character.isAI:
+		var action = active_character.begin_turn()
+		active_character.do_action(action)
+	else:
+		active_character.begin_turn()
+		active_character.do_action()
 
-func next_turn():	
+func next_turn():
 	current_turn_count += 1 # current_turn_count++ does not work and thats a shame
 	_set_active_character_id(active_character_id + 1) # Avoid edge cases
 	

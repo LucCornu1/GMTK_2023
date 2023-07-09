@@ -1,39 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq6qr6kammevr"]
+[gd_scene load_steps=8 format=3 uid="uid://dq6qr6kammevr"]
 
 [ext_resource type="Script" path="res://Character/Character.gd" id="1_1dthf"]
-[ext_resource type="Texture2D" uid="uid://d3gjgsuer7uoh" path="res://Assets/Sprites/Characters/warrior_idle-Sheet.png" id="2_wn7me"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lq4tb"]
-atlas = ExtResource("2_wn7me")
-region = Rect2(0, 0, 74, 43)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bb6jr"]
-atlas = ExtResource("2_wn7me")
-region = Rect2(74, 0, 74, 43)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gbldw"]
-atlas = ExtResource("2_wn7me")
-region = Rect2(148, 0, 74, 43)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vid8j"]
-atlas = ExtResource("2_wn7me")
-region = Rect2(222, 0, 74, 43)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hv7wn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bxoul"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lq4tb")
+"frames": [],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bb6jr")
+"frames": [],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gbldw")
+"frames": [],
+"loop": true,
+"name": &"Hurt",
+"speed": 5.0
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vid8j")
-}],
+"frames": [],
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
@@ -42,31 +28,31 @@ animations = [{
 [sub_resource type="Animation" id="Animation_hgavp"]
 resource_name = "AttackAnimation"
 length = 2.0
-tracks/0/type = "method"
+tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Character7")
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-6.28319, -3.14159, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"_on_animation_end"
 }]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-6.28319, -3.14159, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_fxwfl"]
@@ -151,6 +137,18 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_sakk2"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w2ft6"]
 _data = {
@@ -164,16 +162,13 @@ _data = {
 script = ExtResource("1_1dthf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
 texture_filter = 1
-rotation = 0.785398
+rotation = -6.28319
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_hv7wn")
+sprite_frames = SubResource("SpriteFrames_bxoul")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.856575
-speed_scale = 1.5
-offset = Vector2(6, -6)
+offset = Vector2(5, -2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")

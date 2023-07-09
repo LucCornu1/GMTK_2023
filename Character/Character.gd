@@ -198,13 +198,12 @@ func _physics_process(_delta: float):
 func begin_turn():
 	temps_changement_etat = temps_changement_etat + 1 # Augmente le temps depuis le dernier changement d'émotion
 
-func do_action(action: Node):
+func do_action(action: CharacterAction = CharacterAction.ATTENDRE):
 	animation_player_node.play("AttackAnimation")
-	_set_health(_get_health() - 50.0)
 
 func _on_animation_end():
 	emit_signal("end_turn")
-	emit_signal("animation_over")
+	# emit_signal("animation_over")
 
 func CheckChangeState(_evenement : Evenement = Evenement.AUCUN, tab_pv_allie = [], tab_pvmax_allie=[]) :
 	if (temps_changement_etat < 1) :
