@@ -16,7 +16,7 @@ func begin_turn():
 	super.begin_turn()
 	return ChoseAction()
 
-func do_action( _characterlist,action: CharacterAction = CharacterAction.ATTENDRE):
+func do_action( _characterlist,action: CharacterAction = character_action):
 	character_list = _characterlist
 	match action:
 		CharacterAction.ACTION1:
@@ -26,8 +26,9 @@ func do_action( _characterlist,action: CharacterAction = CharacterAction.ATTENDR
 		CharacterAction.ACTION3:
 			cacher()
 		CharacterAction.ATTENDRE:
+			print("Idle")
 			attendre()
-	#animation_player_node.play("AttackAnimation")
+	animation_player_node.play("AttackAnimation")
 
 func coupdedague():
 	var cible = CibleEnnemiUnique()

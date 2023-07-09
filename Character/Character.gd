@@ -153,18 +153,24 @@ func empoisonnement() :
 
 #Retourne l'action choisie par la classe du personnage et la sauvegarde.
 func ChoseAction(_class : CharacterClass = character_class, _state : CharacterState = character_state) -> CharacterAction :
+	#print("Choix d'action")
 	var _action : CharacterAction
 	var _tabAction
 	match _class:
 		CharacterClass.GUERRIER :
 			_tabAction = GuerrierAction
+			#print("TabGuerrier")
 		CharacterClass.MAGE :
 			_tabAction = MageAction
+			#print("TabMage")
 		CharacterClass.VOLEUR :
 			_tabAction = VoleurAction
+			#print("TabVoleur")
 		_ :
 			_tabAction = GuerrierAction
 	var _fRand : float = randf()
+
+	#print("State",CharacterState.keys()[_state])
 
 	match _state :
 		CharacterState.NEUTRE :
@@ -223,6 +229,10 @@ func ChoseAction(_class : CharacterClass = character_class, _state : CharacterSt
 				_action = CharacterAction.ATTENDRE
 	if (_state == character_state && _class == character_class) : #Sauvegarde de l'action uniquement si les opérateurs n'ont pas été surchargés
 		character_action = _action
+		
+		
+	#print("Action : ",CharacterAction.keys()[_action])
+	#print("Action : ",CharacterAction.keys()[character_action])
 	return character_action #Retourne l'action choisie par la classe du personnage et la sauvegarde.
 
 func _ready():
