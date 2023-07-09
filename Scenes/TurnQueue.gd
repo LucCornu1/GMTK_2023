@@ -62,6 +62,13 @@ func play_turn():
 		next_turn()
 
 	if active_character.isAI:
+		var tabPvIA = []
+		var tabPvMaxIA = []
+		for character in character_array : 
+			if (character.character_class == Character.CharacterClass.GUERRIER || character.character_class == Character.CharacterClass.VOLEUR || character.character_class == Character.CharacterClass.MAGE) :
+				tabPvIA.append(character._get_health())
+				tabPvMaxIA.append(character.max_health)
+		active_character.CheckChangeState(Character.Evenement.AUCUN,tabPvIA,tabPvMaxIA)
 		var action = active_character.begin_turn()
 		print("Action : ",CharacterAction.keys()[action])
 		active_character.do_action(character_array, action)
