@@ -45,6 +45,7 @@ var current_mana: float = max_mana : set = _set_mana, get = _get_mana
 
 signal health_loss
 signal end_turn
+signal character_selected
 
 @export var isAI: bool = false
 @onready var animation_player_node: AnimationPlayer = get_node("AnimationPlayer")
@@ -335,4 +336,3 @@ func CheckChangeState(_evenement : Evenement = Evenement.AUCUN, tab_pv_allie = [
 func ChangeState (_character_state : CharacterState):
 	character_state = _character_state
 	temps_changement_etat = 0
-	pass

@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxv7a5m87radx"]
+
+[ext_resource type="Script" path="res://Scenes/UI/SkillList.gd" id="1_k7ihj"]
+
+[node name="Skills" type="Control"]
+layout_mode = 3
+offset_right = 176.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k7ihj")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 38.0
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 38.0
+text = "Skill 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="."]
+offset_top = 45.0
+offset_right = 176.0
+offset_bottom = 83.0
+
+[node name="Label" type="Label" parent="Button2"]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 38.0
+text = "Skill 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="Button" parent="."]
+offset_top = 90.0
+offset_right = 176.0
+offset_bottom = 128.0
+
+[node name="Label" type="Label" parent="Button3"]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 38.0
+text = "Skill 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
