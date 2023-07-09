@@ -151,7 +151,7 @@ func _physics_process(_delta: float):
 func begin_turn():
 	temps_changement_etat = temps_changement_etat + 1 # Augmente le temps depuis le dernier changement d'émotion
 
-func do_action(action: Node):
+func do_action(action: CharacterAction = CharacterAction.ATTENDRE):
 	animation_player_node.play("AttackAnimation")
 
 
