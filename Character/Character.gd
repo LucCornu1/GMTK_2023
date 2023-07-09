@@ -46,6 +46,7 @@ var current_mana: float = max_mana : set = _set_mana, get = _get_mana
 
 signal health_loss
 signal end_turn
+signal character_selected
 
 @export var isAI: bool = false
 @onready var animation_player_node: AnimationPlayer = get_node("AnimationPlayer")
@@ -86,7 +87,7 @@ func _set_health(value: float):
 	if value != current_health:
 		current_health = value
 		emit_signal("health_loss", current_health)
-		
+
 func _set_mana(value: float):
 	if value != current_mana:
 		current_mana = value
@@ -126,15 +127,15 @@ func GetState() -> CharacterState:
 func GetAction() -> CharacterAction:
 	return character_action
 
-func _get_classname() -> String: 
+func _get_classname() -> String:
 	return CharacterClass.keys()[character_class]
 
-func _get_actionname() -> String: 
+func _get_actionname() -> String:
 	return CharacterAction.keys()[character_action]
 
 func _get_health() -> float:
 	return current_health
-	
+
 func _get_mana() -> float:
 	return current_mana
 
@@ -154,7 +155,7 @@ func ChoseAction(_class : CharacterClass = character_class, _state : CharacterSt
 		_ :
 			_tabAction = GuerrierAction
 	var _fRand : float = randf()
-	
+
 	match _state :
 		CharacterState.NEUTRE :
 			if (_fRand < _tabAction[0][0]) :

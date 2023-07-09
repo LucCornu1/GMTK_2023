@@ -32,6 +32,22 @@ func do_action( _characterlist,action: CharacterAction = CharacterAction.ATTENDR
 		CharacterAction.ACTION3:
 			coupsceptre()
 		CharacterAction.ATTENDRE:
+			print("Idle")
+
+	# print(self)
+	animation_player_node.play("AttackAnimation")
+
+
+
+
+func _get_action1_name():
+	return "A1"
+
+func _get_action2_name():
+	return "A2"
+
+func _get_action3_name():
+	return "A3"
 			attendre()
 	#animation_player_node.play("AttackAnimation")
 
@@ -53,7 +69,7 @@ func coupsceptre():
 	if (cible!=self):
 		cible.damage(20)
 
-func _get_actionname() -> String: 
+func _get_actionname() -> String:
 	match character_action:
 		CharacterAction.ACTION1 :
 			return "Boule de Feu"

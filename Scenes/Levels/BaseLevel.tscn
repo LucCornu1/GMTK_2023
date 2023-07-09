@@ -13,8 +13,14 @@ position = Vector2(480, 270)
 
 [node name="TurnQueue" parent="." instance=ExtResource("1_atmjc")]
 
+[node name="Mage3" parent="TurnQueue" instance=ExtResource("5_ukjpb")]
+position = Vector2(597, 168)
+
+[node name="Mage2" parent="TurnQueue" instance=ExtResource("5_ukjpb")]
+position = Vector2(713, 167)
+
 [node name="Mage" parent="TurnQueue" instance=ExtResource("5_ukjpb")]
-position = Vector2(236, 224)
+position = Vector2(222, 167)
 rotation = -3.14159
 scale = Vector2(1, -1)
 character_class = 0
