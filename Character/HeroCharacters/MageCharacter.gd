@@ -16,8 +16,9 @@ func begin_turn():
 	super.begin_turn()
 	return ChoseAction()
 
-func do_action( _characterlist,action: CharacterAction = CharacterAction.ATTENDRE):
+func do_action( _characterlist,action: CharacterAction = character_action):
 	character_list = _characterlist
+	print("Action : ",CharacterAction.keys()[action])
 	match action:
 		CharacterAction.ACTION1:
 			if (lose_mana(10)) :
@@ -56,7 +57,7 @@ func attendre():
 	_set_mana(current_mana+15)
 
 func soin():
-	var cible = CibleEnnemiUnique()
+	var cible = CibleAllieUnique()
 	cible.heal(100)
 
 func coupsceptre():
