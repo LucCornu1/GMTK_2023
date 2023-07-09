@@ -23,16 +23,10 @@ position = Vector2(713, 167)
 position = Vector2(222, 167)
 rotation = -3.14159
 scale = Vector2(1, -1)
-character_class = 0
-max_health = 100.0
-max_mana = 100.0
 isAI = true
 
 [node name="Mage2" parent="TurnQueue" instance=ExtResource("5_ukjpb")]
 position = Vector2(604, 216)
-character_class = 0
-max_health = 100.0
-max_mana = 100.0
 isAI = true
 
 [node name="CombatUI" parent="." instance=ExtResource("4_ns2va")]

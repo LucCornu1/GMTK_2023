@@ -36,6 +36,9 @@ var character_state : CharacterState
 var character_action : CharacterAction
 var temps_changement_etat : int
 
+var bEmpoisonnement : bool = false
+var bCache : bool = false
+
 var character_list
 
 @export var max_health: float = 100.0
@@ -138,6 +141,9 @@ func _get_health() -> float:
 
 func _get_mana() -> float:
 	return current_mana
+	
+func empoisonnement() :
+	bEmpoisonnement = true
 
 #Fonctions membres
 
@@ -225,9 +231,13 @@ func _physics_process(_delta: float):
 	pass
 
 func begin_turn():
+	bCache = false # Fin de l'effet caché
 	temps_changement_etat = temps_changement_etat + 1 # Augmente le temps depuis le dernier changement d'émotion
 
 func do_action( _characterlist, action: CharacterAction = CharacterAction.ATTENDRE):
+	if (bEmpoisonnement) :
+		bEmpoisonnement = false
+		return # Passer le tour si on est empoisonné
 	character_list = _characterlist
 
 func _on_animation_end():
