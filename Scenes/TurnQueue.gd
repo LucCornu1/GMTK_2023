@@ -11,6 +11,14 @@ var current_turn_count: int = 0
 signal active_character_changed()
 signal ai_turn()
 
+enum CharacterAction
+{
+	ACTION1,
+	ACTION2,
+	ACTION3,
+	ATTENDRE
+}
+
 
 func _set_active_character_id(new_id: int) -> void:
 	if new_id >= array_length:
@@ -49,7 +57,8 @@ func play_turn():
 	
 	if active_character.isAI:
 		var action = active_character.begin_turn()
-		active_character.do_action(action)
+		print("Action : ",CharacterAction.keys()[action])
+		active_character.do_action(character_array, action)
 	else:
 		active_character.begin_turn()
 		active_character.do_action(character_array)
