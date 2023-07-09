@@ -36,6 +36,7 @@ var character_state : CharacterState
 var character_action : CharacterAction
 var temps_changement_etat : int
 
+var character_list
 
 @export var max_health: float = 100.0
 var current_health: float = max_health : set = _set_health, get = _get_health
@@ -86,11 +87,35 @@ func _set_health(value: float):
 	if value != current_health:
 		current_health = value
 		emit_signal("health_loss", current_health)
-		
+
 func _set_mana(value: float):
 	if value != current_mana:
 		current_mana = value
+		current_mana = clamp(current_mana, 0 ,max_mana)
 		emit_signal("mana_change", current_mana)
+
+func lose_mana(value: float) -> bool :
+	if (value > current_mana) :
+		return false
+	else :
+		current_mana -= value
+		return true
+
+func damage(value:float) -> bool :
+	if (current_health <= 0):
+		return false
+	else :
+		current_health -= value
+		current_health = clamp(current_health,0,max_health)
+		return true
+
+func heal(value:float) -> bool :
+	if (current_health <= 0):
+		return false
+	else :
+		current_health += value
+		current_health = clamp(current_health,0,max_health)
+		return true
 
 #Assesseurs
 func GetClass() -> CharacterClass:
@@ -102,12 +127,15 @@ func GetState() -> CharacterState:
 func GetAction() -> CharacterAction:
 	return character_action
 
-func _get_classname() -> String: 
+func _get_classname() -> String:
 	return CharacterClass.keys()[character_class]
+
+func _get_actionname() -> String:
+	return CharacterAction.keys()[character_action]
 
 func _get_health() -> float:
 	return current_health
-	
+
 func _get_mana() -> float:
 	return current_mana
 
@@ -127,7 +155,7 @@ func ChoseAction(_class : CharacterClass = character_class, _state : CharacterSt
 		_ :
 			_tabAction = GuerrierAction
 	var _fRand : float = randf()
-	
+
 	match _state :
 		CharacterState.NEUTRE :
 			if (_fRand < _tabAction[0][0]) :
@@ -199,18 +227,18 @@ func _physics_process(_delta: float):
 func begin_turn():
 	temps_changement_etat = temps_changement_etat + 1 # Augmente le temps depuis le dernier changement d'émotion
 
-func do_action(action: CharacterAction = CharacterAction.ATTENDRE):
-	animation_player_node.play("AttackAnimation")
+func do_action( _characterlist, action: CharacterAction = CharacterAction.ATTENDRE):
+	character_list = _characterlist
 
 func _on_animation_end():
 	emit_signal("end_turn")
 	# emit_signal("animation_over")
 
 func CheckChangeState(_evenement : Evenement = Evenement.AUCUN, tab_pv_allie = [], tab_pvmax_allie=[]) :
-	if (temps_changement_etat < 1) :
-		return
 	var _fRand : float = randf()
 	if (_evenement != Evenement.AUCUN) :
+		if (temps_changement_etat < 1) :
+			return
 		match character_class :
 			CharacterClass.GUERRIER : # CAS DU GUERRIER
 				if (current_health > max_health/2) : #PV>50%
@@ -336,3 +364,39 @@ func CheckChangeState(_evenement : Evenement = Evenement.AUCUN, tab_pv_allie = [
 func ChangeState (_character_state : CharacterState):
 	character_state = _character_state
 	temps_changement_etat = 0
+	pass
+
+
+func CibleEnnemiUnique() -> Character :
+	var ciblepotentiel =[]
+	if (character_class == CharacterClass.GUERRIER || character_class == CharacterClass.MAGE || character_class == CharacterClass.VOLEUR):
+		for i in range (0, character_list.size()) :
+			if (character_list[i].GetClass() == CharacterClass.GUERRIER || character_list[i].GetClass() == CharacterClass.MAGE || character_list[i].GetClass() == CharacterClass.VOLEUR):
+				pass
+			else :
+				if (character_list[i]._get_health()>0):
+					ciblepotentiel.append(character_list[i])
+	else :
+		return self
+	if (ciblepotentiel.size()>0):
+		var nRand = randi()%ciblepotentiel.size()
+		return ciblepotentiel[nRand]
+	else :
+		return self
+
+func CibleAllieUnique() -> Character :
+	var ciblepotentiel =[]
+	if (character_class == CharacterClass.GUERRIER || character_class == CharacterClass.MAGE || character_class == CharacterClass.VOLEUR):
+		for i in range (0, character_list.size()) :
+			if (character_list[i].GetClass() == CharacterClass.GUERRIER || character_list[i].GetClass() == CharacterClass.MAGE || character_list[i].GetClass() == CharacterClass.VOLEUR):
+				if (character_list[i]._get_health()>0):
+					ciblepotentiel.append(character_list[i])
+			else :
+				pass
+	else :
+		return self
+	if (ciblepotentiel.size()>0):
+		var nRand = randi()%ciblepotentiel.size()
+		return ciblepotentiel[nRand]
+	else :
+		return self
