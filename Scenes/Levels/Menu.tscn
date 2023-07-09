@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctue3ajvb2jd8"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/Menu.gd" id="1_mv4g2"]
+[ext_resource type="Texture2D" uid="uid://b1rwtq3gc4a5i" path="res://Assets/Sprites/Background/CHICKENOUT_CARD2-export.png" id="1_yafsb"]
+[ext_resource type="AudioStream" uid="uid://xowq844tp27x" path="res://Assets/Music/Menu-Final-Draft.wav" id="3_5b34u"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mv4g2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("1_yafsb")
+
+[node name="StartGame" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.266667)
+layout_mode = 0
+offset_left = 371.0
+offset_top = 338.0
+offset_right = 637.0
+offset_bottom = 391.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5b34u")
+autoplay = true
+
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]

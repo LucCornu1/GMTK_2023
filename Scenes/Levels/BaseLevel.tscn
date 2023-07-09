@@ -15,7 +15,11 @@ script = ExtResource("1_0ab0t")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 270)
 
-[node name="TurnQueue" parent="." instance=ExtResource("1_atmjc")]
+[node name="TurnQueue" parent="." node_paths=PackedStringArray("goon_0", "goon_1", "goon_2", "goon_3") instance=ExtResource("1_atmjc")]
+goon_0 = NodePath("Gnome")
+goon_1 = NodePath("Gnome2")
+goon_2 = NodePath("Gnome3")
+goon_3 = NodePath("Gnome4")
 
 [node name="Gnome" parent="TurnQueue" instance=ExtResource("5_o1kgf")]
 position = Vector2(843, 239)
