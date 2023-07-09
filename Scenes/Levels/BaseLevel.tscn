@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4md4i3eyyse5"]
+[gd_scene load_steps=9 format=3 uid="uid://c4md4i3eyyse5"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/BaseLevel.gd" id="1_0ab0t"]
 [ext_resource type="PackedScene" uid="uid://cqorkk8jtma8s" path="res://Scenes/TurnQueue.tscn" id="1_atmjc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1llph34xx33m" path="res://Character/HeroCharacters/ThiefCharacter.tscn" id="5_tav1s"]
 [ext_resource type="PackedScene" uid="uid://dinyf2fkb6llp" path="res://Character/HeroCharacters/MageCharacter.tscn" id="5_ukjpb"]
 [ext_resource type="PackedScene" uid="uid://ceq44dadlrcnj" path="res://Character/HeroCharacters/WarriorCharacter.tscn" id="6_7xqml"]
+[ext_resource type="AudioStream" uid="uid://dghsenpic86id" path="res://Assets/Music/Battle-Final-Draft.wav" id="8_kx4a7"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_0ab0t")
@@ -17,7 +18,7 @@ position = Vector2(480, 270)
 [node name="TurnQueue" parent="." instance=ExtResource("1_atmjc")]
 
 [node name="Gnome" parent="TurnQueue" instance=ExtResource("5_o1kgf")]
-position = Vector2(635, 176)
+position = Vector2(843, 239)
 max_health = 150.0
 
 [node name="Mage" parent="TurnQueue" instance=ExtResource("5_ukjpb")]
@@ -27,6 +28,10 @@ scale = Vector2(1, -1)
 max_health = 200.0
 isAI = true
 
+[node name="Gnome2" parent="TurnQueue" instance=ExtResource("5_o1kgf")]
+position = Vector2(845, 96)
+max_health = 150.0
+
 [node name="Thief" parent="TurnQueue" instance=ExtResource("5_tav1s")]
 position = Vector2(220, 60)
 rotation = 3.14159
@@ -34,6 +39,10 @@ scale = Vector2(1, -1)
 max_health = 250.0
 max_mana = 0.0
 isAI = true
+
+[node name="Gnome3" parent="TurnQueue" instance=ExtResource("5_o1kgf")]
+position = Vector2(682, 242)
+max_health = 150.0
 
 [node name="Warrior" parent="TurnQueue" instance=ExtResource("6_7xqml")]
 position = Vector2(220, 320)
@@ -43,7 +52,11 @@ max_health = 300.0
 max_mana = 0.0
 isAI = true
 
-[node name="CombatUI" parent="." node_paths=PackedStringArray("top_character", "middle_character", "bottom_character", "enemy_0") instance=ExtResource("4_ns2va")]
+[node name="Gnome4" parent="TurnQueue" instance=ExtResource("5_o1kgf")]
+position = Vector2(679, 101)
+max_health = 150.0
+
+[node name="CombatUI" parent="." node_paths=PackedStringArray("top_character", "middle_character", "bottom_character", "enemy_0", "enemy_1", "enemy_2", "enemy_3") instance=ExtResource("4_ns2va")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -53,3 +66,11 @@ top_character = NodePath("../TurnQueue/Thief")
 middle_character = NodePath("../TurnQueue/Mage")
 bottom_character = NodePath("../TurnQueue/Warrior")
 enemy_0 = NodePath("../TurnQueue/Gnome")
+enemy_1 = NodePath("../TurnQueue/Gnome2")
+enemy_2 = NodePath("../TurnQueue/Gnome3")
+enemy_3 = NodePath("../TurnQueue/Gnome4")
+metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kx4a7")
+autoplay = true

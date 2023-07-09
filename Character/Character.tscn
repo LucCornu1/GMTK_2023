@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq6qr6kammevr"]
+[gd_scene load_steps=14 format=3 uid="uid://dq6qr6kammevr"]
 
 [ext_resource type="Script" path="res://Character/Character.gd" id="1_1dthf"]
 
@@ -24,6 +24,76 @@ animations = [{
 "name": &"Idle",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_hgavp"]
+resource_name = "Attack"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_animation_end"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"Attack", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"Idle", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3i7dj"]
+resource_name = "Block"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_animation_end"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"Block", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"Idle", 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_fxwfl"]
 resource_name = "DeathAnimation"
@@ -65,63 +135,26 @@ tracks/2/keys = {
 "values": [Vector2(5, -2), Vector2(6, -6)]
 }
 
-[sub_resource type="Animation" id="Animation_5nvj5"]
-resource_name = "HurtAnimation"
+[sub_resource type="Animation" id="Animation_ucltp"]
+resource_name = "Default"
 length = 0.5
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath("..")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.785398, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(5, -2), Vector2(6, -6), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.733333, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_sakk2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [{
+"args": [],
+"method": &"_on_animation_end"
+}]
 }
 
-[sub_resource type="Animation" id="Animation_hgavp"]
-resource_name = "Attack"
+[sub_resource type="Animation" id="Animation_fpjkd"]
+resource_name = "Hide"
 length = 2.0
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -144,10 +177,10 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.9),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [&"Attack", 1.0, false],
+"args": [&"Hide", 1.0, false],
 "method": &"play"
 }, {
 "args": [&"Idle", 1.0, false],
@@ -190,94 +223,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_fpjkd"]
-resource_name = "Hide"
-length = 2.0
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_animation_end"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [&"Hide", 1.0, false],
-"method": &"play"
-}, {
-"args": [&"Idle", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_ucltp"]
-resource_name = "Default"
-length = 0.5
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_animation_end"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_3i7dj"]
-resource_name = "Block"
-length = 2.0
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_animation_end"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [&"Block", 1.0, false],
-"method": &"play"
-}, {
-"args": [&"Idle", 1.0, false],
-"method": &"play"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_4qjy0"]
 resource_name = "PoisonAttack"
 length = 2.0
@@ -313,14 +258,68 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_sakk2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1yojp"]
+resource_name = "Death"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Death", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5nvj5"]
+resource_name = "Hurt"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"Hurt", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"Idle", 1.0, false],
+"method": &"play"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w2ft6"]
 _data = {
 "Attack": SubResource("Animation_hgavp"),
 "Block": SubResource("Animation_3i7dj"),
+"Death": SubResource("Animation_1yojp"),
 "DeathAnimation": SubResource("Animation_fxwfl"),
 "Default": SubResource("Animation_ucltp"),
 "Hide": SubResource("Animation_fpjkd"),
-"HurtAnimation": SubResource("Animation_5nvj5"),
+"Hurt": SubResource("Animation_5nvj5"),
 "Laugh": SubResource("Animation_6utmk"),
 "PoisonAttack": SubResource("Animation_4qjy0"),
 "RESET": SubResource("Animation_sakk2")
@@ -331,7 +330,6 @@ script = ExtResource("1_1dthf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-rotation = -6.28319
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bxoul")
 animation = &"Idle"
