@@ -81,8 +81,8 @@ var VoleurAction = [
 func SetClass(_class : CharacterClass):
 	character_class = _class
 
-func SetState(_state : CharacterState):
-	character_state = _state
+#func SetState(_state : CharacterState):
+#	character_state = _state
 
 func SetAction(_action : CharacterAction):
 	character_action = _action
@@ -386,12 +386,11 @@ func CheckChangeState(_evenement : Evenement = Evenement.AUCUN, tab_pv_allie = [
 							ChangeState(CharacterState.CONFIANCE)
 			_ : pass
 		pass
-	pass
+	print("CheckChangeState")
 
-func ChangeState (_character_state : CharacterState):
-	character_state = _character_state
-	temps_changement_etat = 0
-	pass
+#func ChangeState (_character_state : CharacterState):
+#	character_state = _character_state
+#	temps_changement_etat = 0
 
 
 func CibleEnnemiUnique() -> Character :
@@ -453,3 +452,24 @@ func _on_health_loss(value: float):
 		animation_player_node.play("Death")
 		return
 	animation_player_node.play("Hurt")
+
+
+
+@onready var Emotion:AnimatedSprite2D = get_node("AnimatedSprite2DState")
+
+func ChangeState (_character_state : CharacterState):
+	print("Changement Emotion")
+	character_state = _character_state
+	temps_changement_etat = 0
+	if (Emotion) :
+		match _character_state :
+			CharacterState.COLERE :
+				Emotion.play("Colère")
+			CharacterState.CONFIANCE :
+				Emotion.play("Confiance")
+			CharacterState.ENNUI :
+				Emotion.play("Ennui")
+			CharacterState.PEUR :
+				Emotion.play("Peur")
+			_ :
+				Emotion.play("default")
