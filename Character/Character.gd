@@ -153,7 +153,6 @@ func begin_turn():
 
 func do_action(action: Node):
 	animation_player_node.play("AttackAnimation")
-	_set_health(_get_health() - 50.0)
 
 
 func _on_animation_end():
