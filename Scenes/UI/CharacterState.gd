@@ -2,6 +2,16 @@ extends Control
 
 class_name CharacterStateUI
 
+enum CharacterClass
+{
+	GUERRIER,
+	MAGE,
+	VOLEUR,
+	GNOME,
+	ORC,
+	SQUELETTE
+}
+
 @onready var label_node: Label = get_node("Label")
 @onready var progress_bar_node: ProgressBar = get_node("ProgressBar")
 
@@ -13,7 +23,14 @@ func init(character: Character):
 	if character == null:
 		return
 	
-	label_node.set_text(character._get_classname())
+	match character._get_classname() :
+		"GUERRIER" :
+			label_node.set_text("Warrior")
+		"VOLEUR" :
+			label_node.set_text("Thief")
+		"MAGE" :
+			label_node.set_text("Mage")
+		
 	var __ = character.connect("health_loss", _update_health)
 
 func _update_health(value: float):
