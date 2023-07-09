@@ -1,11 +1,11 @@
 [gd_scene load_steps=104 format=3 uid="uid://ceq44dadlrcnj"]
 
 [ext_resource type="Texture2D" uid="uid://d3gjgsuer7uoh" path="res://Assets/Sprites/Characters/warrior_idle-Sheet.png" id="1_a71dx"]
-[ext_resource type="Texture2D" uid="uid://b56r5g5g1sdep" path="res://Assets/Sprites/Characters/warrior_hurt-Sheet.png" id="1_fsdkp"]
-[ext_resource type="Texture2D" uid="uid://bguh3rj1tteab" path="res://Assets/Sprites/Characters/warrior_death-Sheet.png" id="1_jvmlw"]
+[ext_resource type="Texture2D" uid="uid://br5q5vyig3e5j" path="res://Assets/Sprites/Characters/warrior_hurt-Sheet.png" id="1_fsdkp"]
+[ext_resource type="Texture2D" uid="uid://cxub73ckje1p5" path="res://Assets/Sprites/Characters/warrior_death-Sheet.png" id="1_jvmlw"]
 [ext_resource type="PackedScene" uid="uid://dq6qr6kammevr" path="res://Character/Character.tscn" id="1_l8ofs"]
 [ext_resource type="Script" path="res://Character/HeroCharacters/WarriorCharacter.gd" id="1_wdaxn"]
-[ext_resource type="Texture2D" uid="uid://df2q3yb8h64gy" path="res://Assets/Sprites/Characters/warrior_attack-Sheet.png" id="2_60r1k"]
+[ext_resource type="Texture2D" uid="uid://b7prcodp8gi6s" path="res://Assets/Sprites/Characters/warrior_attack-Sheet.png" id="2_60r1k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kqpvp"]
 atlas = ExtResource("2_60r1k")

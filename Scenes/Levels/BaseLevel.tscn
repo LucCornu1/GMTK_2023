@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4md4i3eyyse5"]
+[gd_scene load_steps=6 format=3 uid="uid://c4md4i3eyyse5"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/BaseLevel.gd" id="1_0ab0t"]
 [ext_resource type="PackedScene" uid="uid://cqorkk8jtma8s" path="res://Scenes/TurnQueue.tscn" id="1_atmjc"]
 [ext_resource type="PackedScene" uid="uid://ck2u14xe0dxn1" path="res://Scenes/UI/CombatUI.tscn" id="4_ns2va"]
+[ext_resource type="PackedScene" uid="uid://pui58ljxji3q" path="res://Character/Enemies/GnomeCharacter.tscn" id="5_o1kgf"]
 [ext_resource type="PackedScene" uid="uid://dinyf2fkb6llp" path="res://Character/HeroCharacters/MageCharacter.tscn" id="5_ukjpb"]
 
 [node name="Level" type="Node2D"]
@@ -13,19 +14,20 @@ position = Vector2(480, 270)
 
 [node name="TurnQueue" parent="." instance=ExtResource("1_atmjc")]
 
+[node name="Gnome" parent="TurnQueue" instance=ExtResource("5_o1kgf")]
+position = Vector2(635, 176)
+
 [node name="Mage" parent="TurnQueue" instance=ExtResource("5_ukjpb")]
-position = Vector2(236, 224)
+position = Vector2(222, 167)
 rotation = -3.14159
 scale = Vector2(1, -1)
 isAI = true
 
-[node name="Mage2" parent="TurnQueue" instance=ExtResource("5_ukjpb")]
-position = Vector2(604, 216)
-isAI = true
-
-[node name="CombatUI" parent="." instance=ExtResource("4_ns2va")]
+[node name="CombatUI" parent="." node_paths=PackedStringArray("top_character", "enemy_0") instance=ExtResource("4_ns2va")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+top_character = NodePath("../TurnQueue/Mage")
+enemy_0 = NodePath("../TurnQueue/Gnome")

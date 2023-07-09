@@ -24,7 +24,7 @@ func _set_active_character_id(new_id: int) -> void:
 func _set_active_character(new_character: Character) -> void:
 	if new_character != active_character:
 		active_character = new_character
-		# emit_signal("")
+		emit_signal("active_character_changed", active_character)
 
 func _get_active_character() -> Character:
 	return active_character
@@ -37,11 +37,11 @@ func initialize():
 	character_array = get_children(false) # Return all external children
 	array_length = character_array.size()
 	
-	if array_length > 0:
-		active_character = character_array[active_character_id];
-	
 	for c in character_array:
 		var __ = c.end_turn.connect(_on_end_turn)
+	
+	if array_length > 0:
+		_set_active_character(character_array[active_character_id]);
 
 func play_turn():
 	if active_character == null:
@@ -52,7 +52,7 @@ func play_turn():
 		active_character.do_action(action)
 	else:
 		active_character.begin_turn()
-		active_character.do_action()
+		active_character.do_action(character_array)
 
 func next_turn():
 	current_turn_count += 1 # current_turn_count++ does not work and thats a shame
@@ -62,11 +62,18 @@ func next_turn():
 		emit_signal("ai_turn")
 
 
-func _on_active_character_changed(new_id: int):
-	_set_active_character(character_array[new_id])
+func _on_active_character_changed(character: Character):
+	pass
 
 func _on_ai_turn():
 	pass
 
 func _on_end_turn():
 	next_turn()
+
+func _on_action_selected(action):
+	if active_character == null:
+		return
+	
+	active_character.begin_turn()
+	active_character.do_action(character_array, action)
