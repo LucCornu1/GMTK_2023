@@ -237,6 +237,8 @@ func ChoseAction(_class : CharacterClass = character_class, _state : CharacterSt
 
 func _ready():
 	temps_changement_etat = 0
+	
+	var __ = health_loss.connect(_on_health_loss)
 
 func _process(_delta: float):
 	pass
@@ -444,3 +446,10 @@ func CibleAllieUnique() -> Character :
 		return ciblepotentiel[nRand]
 	else :
 		return self
+
+
+func _on_health_loss(value: float):
+	if _get_health() <= 0:
+		animation_player_node.play("Death")
+		return
+	animation_player_node.play("Hurt")
