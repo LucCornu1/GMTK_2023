@@ -202,11 +202,9 @@ func do_action(action: Node):
 	animation_player_node.play("AttackAnimation")
 	_set_health(_get_health() - 50.0)
 
-
 func _on_animation_end():
 	emit_signal("end_turn")
 	emit_signal("animation_over")
-
 
 func CheckChangeState(_evenement : Evenement = Evenement.AUCUN, tab_pv_allie = [], tab_pvmax_allie=[]) :
 	if (temps_changement_etat < 1) :
