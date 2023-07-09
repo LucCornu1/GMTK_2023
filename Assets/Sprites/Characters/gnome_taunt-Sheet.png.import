@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpwdpd3dk5hca"
-path="res://.godot/imported/Sprite-bg1-export.png-6e44df7587d86a480611e4d3bc31b78e.ctex"
+uid="uid://bhyrtdfrxco4k"
+path="res://.godot/imported/gnome_taunt-Sheet.png-b64507ebe5f1b34ba280e786ddc28b11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Background/Sprite-bg1-export.png"
-dest_files=["res://.godot/imported/Sprite-bg1-export.png-6e44df7587d86a480611e4d3bc31b78e.ctex"]
+source_file="res://Assets/Sprites/Characters/gnome_taunt-Sheet.png"
+dest_files=["res://.godot/imported/gnome_taunt-Sheet.png-b64507ebe5f1b34ba280e786ddc28b11.ctex"]
 
 [params]
 

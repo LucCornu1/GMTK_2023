@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpwdpd3dk5hca"
-path="res://.godot/imported/Sprite-bg1-export.png-6e44df7587d86a480611e4d3bc31b78e.ctex"
+uid="uid://dbg0mj73622dj"
+path="res://.godot/imported/gnome_attack-Sheet.png-d86186f5e20a5dc9c0c390ff38106730.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Background/Sprite-bg1-export.png"
-dest_files=["res://.godot/imported/Sprite-bg1-export.png-6e44df7587d86a480611e4d3bc31b78e.ctex"]
+source_file="res://Assets/Sprites/Characters/gnome_attack-Sheet.png"
+dest_files=["res://.godot/imported/gnome_attack-Sheet.png-d86186f5e20a5dc9c0c390ff38106730.ctex"]
 
 [params]
 

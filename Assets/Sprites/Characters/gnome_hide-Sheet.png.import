@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpwdpd3dk5hca"
-path="res://.godot/imported/Sprite-bg1-export.png-6e44df7587d86a480611e4d3bc31b78e.ctex"
+uid="uid://hbr3vgr0lw7y"
+path="res://.godot/imported/gnome_hide-Sheet.png-982d317fb128401b54dd49e83c0424c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Background/Sprite-bg1-export.png"
-dest_files=["res://.godot/imported/Sprite-bg1-export.png-6e44df7587d86a480611e4d3bc31b78e.ctex"]
+source_file="res://Assets/Sprites/Characters/gnome_hide-Sheet.png"
+dest_files=["res://.godot/imported/gnome_hide-Sheet.png-982d317fb128401b54dd49e83c0424c3.ctex"]
 
 [params]
 

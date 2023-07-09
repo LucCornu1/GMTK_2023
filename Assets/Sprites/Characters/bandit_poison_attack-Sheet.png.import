@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpwdpd3dk5hca"
-path="res://.godot/imported/Sprite-bg1-export.png-6e44df7587d86a480611e4d3bc31b78e.ctex"
+uid="uid://ddym57prhhudg"
+path="res://.godot/imported/bandit_poison_attack-Sheet.png-7afaa3196661fc92d6dd4a385b9f58c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Background/Sprite-bg1-export.png"
-dest_files=["res://.godot/imported/Sprite-bg1-export.png-6e44df7587d86a480611e4d3bc31b78e.ctex"]
+source_file="res://Assets/Sprites/Characters/bandit_poison_attack-Sheet.png"
+dest_files=["res://.godot/imported/bandit_poison_attack-Sheet.png-7afaa3196661fc92d6dd4a385b9f58c7.ctex"]
 
 [params]
 
