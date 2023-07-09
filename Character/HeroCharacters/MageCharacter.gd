@@ -33,8 +33,8 @@ func do_action( _characterlist,action: CharacterAction = CharacterAction.ATTENDR
 			coupsceptre()
 		CharacterAction.ATTENDRE:
 			print("Idle")
-
-	# print(self)
+			attendre()
+	
 	animation_player_node.play("AttackAnimation")
 
 
@@ -48,7 +48,6 @@ func _get_action2_name():
 
 func _get_action3_name():
 	return "A3"
-			attendre()
 	#animation_player_node.play("AttackAnimation")
 
 

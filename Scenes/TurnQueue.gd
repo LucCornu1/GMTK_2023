@@ -70,3 +70,10 @@ func _on_ai_turn():
 
 func _on_end_turn():
 	next_turn()
+
+func _on_action_selected(action):
+	if active_character == null:
+		return
+	
+	active_character.begin_turn()
+	active_character.do_action(character_array, action)

@@ -9,6 +9,7 @@ class_name SkillList
 var active_character: Character : set = _set_active_character
 
 signal skip_turn
+signal action_selected
 
 func _set_active_character(new_character: Character):
 	if new_character != active_character:
@@ -51,15 +52,15 @@ func _on_active_character_changed(character: Character):
 
 func _on_button_pressed():
 	if active_character != null and not active_character.isAI:
-		active_character.do_action(active_character.CharacterAction.ACTION1)
+		emit_signal("action_selected", active_character.CharacterAction.ACTION1)
 		visible = false
 
 func _on_button_2_pressed():
 	if active_character != null and not active_character.isAI:
-		active_character.do_action(active_character.CharacterAction.ACTION2)
+		emit_signal("action_selected", active_character.CharacterAction.ACTION2)
 		visible = false
 
 func _on_button_3_pressed():
 	if active_character != null and not active_character.isAI:
-		active_character.do_action(active_character.CharacterAction.ACTION3)
+		emit_signal("action_selected", active_character.CharacterAction.ACTION3)
 		visible = false

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://pui58ljxji3q"]
+
+[ext_resource type="PackedScene" uid="uid://dq6qr6kammevr" path="res://Character/Character.tscn" id="1_3x40f"]
+[ext_resource type="Script" path="res://Character/Enemies/GnomeCharacter.gd" id="2_rdw7f"]
+
+[node name="Gnome" instance=ExtResource("1_3x40f")]
+script = ExtResource("2_rdw7f")
