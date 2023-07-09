@@ -80,9 +80,11 @@ func _on_ai_turn():
 func _on_end_turn():
 	next_turn()
 
-func _on_action_selected(action):
+func _on_action_selected(target, action):
 	if active_character == null:
 		return
-	
 	active_character.begin_turn()
-	active_character.do_action(character_array, action)
+	if (!target is bool) :
+		active_character.do_action(target, action)
+	else : 
+		active_character.do_action(character_array, action)
