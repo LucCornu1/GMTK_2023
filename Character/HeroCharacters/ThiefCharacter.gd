@@ -30,16 +30,21 @@ func do_action( _characterlist,action: CharacterAction = CharacterAction.ATTENDR
 	#animation_player_node.play("AttackAnimation")
 
 func coupdedague():
-	pass
+	var cible = CibleEnnemiUnique()
+	if (cible!=self):
+		cible.damage(40)
 
 func attendre():
 	pass
 
 func empoisonnement():
-	pass
+	var cible = CibleEnnemiUnique()
+	if (cible!=self):
+		cible.damage(30)
+		cible.empoisonnement()
 
 func cacher():
-	pass
+	bCache = true
 
 func _get_actionname() -> String: 
 	match character_action:
