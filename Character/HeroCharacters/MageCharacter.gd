@@ -18,24 +18,29 @@ func begin_turn():
 
 func do_action( _characterlist,action: CharacterAction = CharacterAction.ATTENDRE):
 	character_list = _characterlist
+	
+	var anim_name: String = "Default"
 	match action:
 		CharacterAction.ACTION1:
 			if (lose_mana(10)) :
 				bouledefeu()
+				anim_name = "Attack"
 			else :
 				attendre()
 		CharacterAction.ACTION2:
 			if (lose_mana(5)) :
 				soin()
+				anim_name = "Attack"
 			else :
 				attendre()
 		CharacterAction.ACTION3:
 			coupsceptre()
+			anim_name = "Attack"
 		CharacterAction.ATTENDRE:
 			print("Idle")
 			attendre()
 
-	animation_player_node.play("AttackAnimation")
+	animation_player_node.play(anim_name)
 
 func _get_action1_name():
 	return "A1"

@@ -18,16 +18,22 @@ func begin_turn():
 
 func do_action( _characterlist,action: CharacterAction = CharacterAction.ATTENDRE):
 	character_list = _characterlist
+	
+	var anim_name: String = "Default"
 	match action:
 		CharacterAction.ACTION1:
 			coupdedague()
+			anim_name = "Attack"
 		CharacterAction.ACTION2:
 			empoisonnement()
+			anim_name = "Attack"
 		CharacterAction.ACTION3:
 			cacher()
+			anim_name = "Hide"
 		CharacterAction.ATTENDRE:
 			attendre()
-	#animation_player_node.play("AttackAnimation")
+	
+	animation_player_node.play(anim_name)
 
 func coupdedague():
 	var cible = CibleEnnemiUnique()
@@ -58,3 +64,13 @@ func _get_actionname() -> String:
 			return "Attendre"
 		_ :
 			return ""
+
+
+func _get_action1_name():
+	return "Attack"
+
+func _get_action2_name():
+	return "Laugh"
+
+func _get_action3_name():
+	return "Hide"

@@ -44,8 +44,8 @@ func initialize():
 		_set_active_character(character_array[active_character_id]);
 
 func play_turn():
-	if active_character == null:
-		return
+	if active_character == null or active_character._get_health() <= 0:
+		next_turn()
 	
 	if active_character.isAI:
 		var action = active_character.begin_turn()
@@ -58,7 +58,7 @@ func next_turn():
 	current_turn_count += 1 # current_turn_count++ does not work and thats a shame
 	_set_active_character_id(active_character_id + 1) # Avoid edge cases
 	
-	if active_character.isAI == true:
+	if active_character.isAI == true or active_character._get_health() <= 0:
 		emit_signal("ai_turn")
 
 
@@ -72,8 +72,8 @@ func _on_end_turn():
 	next_turn()
 
 func _on_action_selected(action):
-	if active_character == null:
-		return
+	if active_character == null :
+		next_turn()
 	
 	active_character.begin_turn()
 	active_character.do_action(character_array, action)
