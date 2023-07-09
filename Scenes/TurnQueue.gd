@@ -52,7 +52,7 @@ func play_turn():
 		active_character.do_action(action)
 	else:
 		active_character.begin_turn()
-		active_character.do_action()
+		active_character.do_action(character_array)
 
 func next_turn():
 	current_turn_count += 1 # current_turn_count++ does not work and thats a shame

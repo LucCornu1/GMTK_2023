@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dq6qr6kammevr" path="res://Character/Character.tscn" id="1_w6sfx"]
 [ext_resource type="Script" path="res://Character/HeroCharacters/ThiefCharacter.gd" id="2_s6gwh"]
 [ext_resource type="Texture2D" uid="uid://7rj67odbijco" path="res://Assets/Sprites/Characters/bandit_attack-Sheet.png" id="3_8i576"]
-[ext_resource type="Texture2D" uid="uid://cwljuxaupqj8k" path="res://Assets/Sprites/Characters/bandit_hurt-Sheet.png" id="3_mmt4x"]
-[ext_resource type="Texture2D" uid="uid://ceoug84g5k5yh" path="res://Assets/Sprites/Characters/bandit_death-Sheet.png" id="3_n871c"]
+[ext_resource type="Texture2D" uid="uid://b7dc3v0ypmdkr" path="res://Assets/Sprites/Characters/bandit_hurt-Sheet.png" id="3_mmt4x"]
+[ext_resource type="Texture2D" uid="uid://2gjf1p0p3iit" path="res://Assets/Sprites/Characters/bandit_death-Sheet.png" id="3_n871c"]
 [ext_resource type="Texture2D" uid="uid://b0ux05dkhnuq2" path="res://Assets/Sprites/Characters/bandit_idle-Sheet.png" id="4_76iri"]
-[ext_resource type="Texture2D" uid="uid://g3kg8g4ri6k8" path="res://Assets/Sprites/Characters/bandit_poison-Sheet.png" id="7_r0lnm"]
+[ext_resource type="Texture2D" uid="uid://c0hgpk45flb4y" path="res://Assets/Sprites/Characters/bandit_poison-Sheet.png" id="7_r0lnm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e4bid"]
 atlas = ExtResource("3_8i576")

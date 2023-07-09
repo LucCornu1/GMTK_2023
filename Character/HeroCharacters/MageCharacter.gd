@@ -5,6 +5,7 @@ class_name Mage
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
+	character_class = CharacterClass.MAGE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -15,15 +16,52 @@ func begin_turn():
 	super.begin_turn()
 	return ChoseAction()
 
-func do_action(action: CharacterAction = CharacterAction.ATTENDRE):
+func do_action( _characterlist,action: CharacterAction = CharacterAction.ATTENDRE):
+	character_list = _characterlist
 	match action:
 		CharacterAction.ACTION1:
-			print("Action1")
+			if (lose_mana(10)) :
+				bouledefeu()
+			else :
+				attendre()
 		CharacterAction.ACTION2:
-			print("Action2")
+			if (lose_mana(5)) :
+				soin()
+			else :
+				attendre()
 		CharacterAction.ACTION3:
-			print("Action3")
+			coupsceptre()
 		CharacterAction.ATTENDRE:
-			print("Idle")
-	
-	animation_player_node.play("AttackAnimation")
+			attendre()
+	#animation_player_node.play("AttackAnimation")
+
+
+func bouledefeu():
+	var cible = CibleEnnemiUnique()
+	if (cible!=self):
+		cible.damage(80)
+
+func attendre():
+	_set_mana(current_mana+15)
+
+func soin():
+	var cible = CibleEnnemiUnique()
+	cible.heal(100)
+
+func coupsceptre():
+	var cible = CibleEnnemiUnique()
+	if (cible!=self):
+		cible.damage(20)
+
+func _get_actionname() -> String: 
+	match character_action:
+		CharacterAction.ACTION1 :
+			return "Boule de Feu"
+		CharacterAction.ACTION2 :
+			return "Soin"
+		CharacterAction.ACTION3 :
+			return "Coup de Sceptre"
+		CharacterAction.ATTENDRE :
+			return "Attendre"
+		_ :
+			return ""
