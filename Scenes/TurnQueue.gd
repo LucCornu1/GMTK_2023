@@ -2,6 +2,12 @@ extends Node
 
 class_name TurnQueue
 
+
+@export var goon_0: Character
+@export var goon_1: Character
+@export var goon_2: Character
+@export var goon_3: Character
+
 var active_character_id: int = 0 : set = _set_active_character_id
 @onready var active_character: Character : set = _set_active_character, get = _get_active_character
 var character_array = []
@@ -71,6 +77,9 @@ func play_turn():
 		active_character.do_action(character_array)
 
 func next_turn():
+	if goon_0._get_health() <= 0 and goon_1._get_health() <= 0 and goon_2._get_health() <= 0 and goon_3._get_health() <= 0:
+		get_tree().change_scene_to_file("res://Scenes/Levels/Menu.tscn")
+	
 	current_turn_count += 1 # current_turn_count++ does not work and thats a shame
 	_set_active_character_id(active_character_id + 1) # Avoid edge cases
 

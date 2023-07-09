@@ -26,7 +26,7 @@ func do_action( _characterlist,action: CharacterAction = character_action):
 			anim_name = "Attack"
 		CharacterAction.ACTION2:
 			empoisonnement()
-			anim_name = "Attack"
+			anim_name = "PoisonAttack"
 		CharacterAction.ACTION3:
 			cacher()
 			anim_name = "Hide"
